@@ -21,10 +21,20 @@
     </header>
     <section class="conpons">
         <!-- <div class="item">
-            <div class="logo">
-                <img src="./images/kfc.jpg" alt="">
-            </div>
-            <span>肯德基</span>
+            <a href="conpons.html">
+                <div class="logo">
+                    <img src="./images/kfc.jpg" alt="">
+                </div>
+                <span>肯德基</span>
+            </a>
+        </div>
+        <div class="item">
+            <a href="conpons.html">
+                <div class="logo">
+                    <img src="./images/kfc.jpg" alt="">
+                </div>
+                <span>肯德基</span>
+            </a>
         </div> -->
     </section>
     <section class="location">
@@ -35,28 +45,35 @@
         </div>
     </section>
 </body>
-<script src="./node_modules/zepto/dist/zepto.min.js"></script>
+<script src="js/zepto.min.js"></script>
+<script src="js/dialog.js"></script>
 <script src="./js/template-web.js"></script>
+
 <script type="text/template" id="template">
+    
     {{each data value}}
     <div class="item">
-        <div class="logo">
-            <img src="{{value.couponImg}}" alt="">
-        </div>
-        <span>{{value.couponTitle}}</span>
+        <a href="conpons_item.html?id={{value.couponId}}">
+            <div class="logo">
+                <img src="{{value.couponImg}}" alt="">
+            </div>
+            <span>{{value.couponTitle}}</span>
+        </a>
     </div>
     {{/each}}
 </script>
+
 <script>
     $(function () {
         $.ajax({
             type: 'GET',
-            url: 'http://193.112.55.79:9090/api/getmoneyctrl',
+            url: 'http://mmb.ittun.com/api/getcoupon',
             dataType: 'json',
             success: function (res) {
                 console.log(res);
                 var data = res.result;
-                var dataJson = template('temp',{"data":data});
+                console.log(data);
+                var dataJson = template('template',{"data":data});
                 $(".conpons").html(dataJson);                          
             }
         })

@@ -6,14 +6,30 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="stylesheet" href="./css/getconpon.css">
+    <link rel="stylesheet" href="./css/dialog.css">
+    <link rel="stylesheet" href="css/font-awesome.css">
     <title>Document</title>
 </head>
 
 <body>
+    <div class="mask hide">
+        <ul class="mask_banner">
+            <li class="fa fa-angle-left prev"></li>
+            <li>
+                <ul class="">
+                    <li class="conter">
+                        <img src="./images/kfc.jpg" alt="">
+                    </li>
+                </ul>
+            </li>
+            <li class="fa fa-angle-right next"></li>
+        </ul>
+    </div>
     <header>
-        <a href="#" class="back"></a>
+        <a href="getconpon.html" class="back"></a>
         <div class="tlt">
-            <h3><span>肯德基</span>优惠券</h3>
+            <h3>
+                <span>肯德基</span>优惠券</h3>
         </div>
         <a href="#" class="app">
             <img src="./images/header_app.png" alt="">
@@ -23,7 +39,7 @@
         <span>--点餐前出示手机中优惠券,即可享受优惠--</span>
     </section> -->
     <section class="content">
-        <!-- <div class="item">
+        <!--<div class="item">
             <div class="left">
                 <a href="#" class="mask">
                     <img src="./images/kfc.jpg" alt="">
@@ -41,51 +57,36 @@
                 <span class="into"></span>
             </div>
         </div>
-        <div class="item">
-            <div class="left">
-                <a href="#" class="mask">
-                    <img src="./images/kfc.jpg" alt="">
-                </a>
-            </div>
-            <div class="right">
-                <div class="txt">
-                    <a href="#">THERMOS 膳魔师 F4011-BLY-DRM 儿童保温杯 350ml*3+凑单品</a>
-                </div>
-                <span class="price">
-                    <i>￥</i>25</span>
-                <span class="validity">
-                    <a href="#">有效期至10月31日</a>
-                </span>
-                <span class="into"></span>
-            </div>
         </div> -->
     </section>
 </body>
-<script src="./node_modules/zepto/dist/zepto.min.js"></script>
-<script src="./js/template-web.js"></script>
-<script src="./js/index.js"></script>
+<script src="js/zepto.min.js"></script>
+<script src="js/dialog.js"></script>
+<script src="js/template-web.js"></script>
+<script src="js/index.js"></script>
 
 <script type="text/template" id="sss">
     {{each data value}}
-        <div class="item">
-            <div class="left">
-                <a href="#" class="mask">
-                    {{@value.productImgSm}}
-                </a>
-            </div>
-            <div class="right">
-                <div class="txt">
-                    <a href="#">{{value.productInfo2}}</a>
-                </div>
-                <span class="price">{{value.productPinkage}}</span>
-                <span class="validity">
-                    <a href="#">有效期至<span>{{value.productTime}}</span></a>
-                </span>
-                <span class="into"></span>
-            </div>
+    <div class="item">
+        <div class="left">
+            <a href="javascript:;" class="tcxc" id="{{value.couponProductId}}">
+                {{@value.couponProductImg}}
+            </a>
         </div>
+        <div class="right">
+            <div class="txt">
+                <a href="#">{{value.couponProductName}}</a>
+            </div>
+            <span class="price">{{value.couponProductPrice}}</span>
+            <span class="validity">
+                <a href="#">
+                    <span>{{value.couponProductTime}}</span>
+                </a>
+            </span>
+            <span class="into"></span>
+        </div>
+    </div>
     {{/each}}
 </script>
-
 
 </html>
